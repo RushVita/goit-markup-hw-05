@@ -140,10 +140,9 @@ img {
   border-radius: 2px;
   height: 4px;
   width: 100%;
-  margin-bottom: -1px;
 
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
 }
 .header-address {
@@ -685,7 +684,8 @@ img {
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
 
-  transition: background-color var(--duration-timing-function);
+  transition: background-color var(--duration-timing-function),
+    border var(--duration-timing-function);
 }
 
 .modal-btn:hover,
