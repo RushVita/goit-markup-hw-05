@@ -14,6 +14,8 @@
   --button-text-color: #4d5ae5;
   --hover-link-button-color: #404bbf;
   --customers-color: #8e8f99;
+
+  --duration-timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -52,13 +54,6 @@ img {
 .list {
   list-style-type: none;
 }
-
-.item {
-}
-
-.button {
-}
-
 .container {
   width: 1158px;
   padding-left: 15px;
@@ -124,14 +119,7 @@ img {
   color: var(--title-color);
   font-weight: 500;
 }
-
-/* .header-nav-link:hover,
-.header-nav-link:focus {
-  color: var(--hover-link-button-color);
-  text-decoration: underline;
-} */
-
-.portfolio-nav-link::after {
+.active::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -142,19 +130,6 @@ img {
   border-radius: 4px;
   width: 100%;
 }
-
-.studio-nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  display: block;
-  border: 2px solid var(--hover-link-button-color);
-  border-radius: 4px;
-  width: 100%;
-}
-
 .header-address {
   display: flex;
 }
@@ -162,18 +137,12 @@ img {
   gap: 40px;
   display: flex;
 }
-
-.header-address-item {
-}
-
-.header-address-item + .item {
-  /* margin-left: 40px; */
-}
 .header-address-link {
   font-style: normal;
   color: var(--text-color);
-}
 
+  transition: color var(--duration-timing-function);
+}
 .header-address-link:hover,
 .header-address-link:focus {
   color: var(--hover-link-button-color);
@@ -183,12 +152,6 @@ img {
 .hero-container {
   padding-top: 188px;
   padding-bottom: 188px;
-
-  /* background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-    url(../images/people-office\ .jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center; */
 }
 
 .hero {
@@ -203,7 +166,6 @@ img {
   background-size: cover;
   background-position: center;
 }
-
 .hero-title {
   max-width: 496px;
   margin-bottom: 48px;
@@ -219,7 +181,6 @@ img {
   text-align: center;
   color: var(--hero-text-color);
 }
-
 .hero-button {
   display: block;
   min-width: 169px;
@@ -229,6 +190,8 @@ img {
   margin-right: auto;
   border: none;
   border-radius: 4px;
+
+  transition: background-color var(--duration-timing-function);
 
   background-color: var(--hero-button-background-color);
   color: var(--hero-text-color);
@@ -242,10 +205,12 @@ img {
   cursor: pointer;
 }
 
-/* MAIN-STRATEGY */
-
-.strategy-container {
+.hero-button:hover,
+.hero-button:focus {
+  background-color: var(--hover-link-button-color);
 }
+
+/* MAIN-STRATEGY */
 
 .strategy {
   padding-top: 120px;
@@ -298,10 +263,6 @@ img {
 }
 
 /* MAIN-DOING */
-
-.doing-container {
-}
-
 .doing {
   padding-bottom: 120px;
 }
@@ -324,18 +285,11 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-
-.doing-item {
-}
 .doing-img {
   border: 1px solid #e7e9fc;
 }
 
 /* MAIN-TEAM */
-
-.team-container {
-}
-
 .team {
   background-color: var(--button-background-color);
   padding-top: 120px;
@@ -407,6 +361,8 @@ img {
   height: 40px;
   background-color: var(--logo-title-color);
   border-radius: 50%;
+
+  transition: background-color var(--duration-timing-function);
 }
 
 .social-team-link:hover,
@@ -466,6 +422,8 @@ img {
   border: 1px solid #8e8f99;
   border-radius: 4px;
   cursor: pointer;
+
+  transition: color var(--duration-timing-function), border-color var(--duration-timing-function);
 }
 
 .customers-icon {
@@ -536,6 +494,8 @@ img {
   height: 40px;
   border-radius: 50%;
   background-color: var(--logo-title-color);
+
+  transition: background-color var(--duration-timing-function);
 }
 .footer-social-link:hover,
 .footer-social-link:focus {
@@ -547,9 +507,6 @@ img {
 }
 
 /* Portfolio */
-.portfolio-container {
-}
-
 .portfolio {
   padding-top: 96px;
   padding-bottom: 120px;
@@ -560,9 +517,6 @@ img {
   margin-bottom: 72px;
   justify-content: center;
 }
-.portfolio-btn-item {
-}
-
 .portfolio-button {
   padding: 12px 24px;
   border: 1px solid #e7e9fc;
@@ -578,6 +532,9 @@ img {
   text-align: center;
   letter-spacing: 0.04em;
   cursor: pointer;
+
+  transition: box-shadow var(--duration-timing-function),
+    background-color var(--duration-timing-function);
 }
 
 .portfolio-button:hover,
@@ -599,13 +556,10 @@ img {
 .portfolio-content-item {
   width: calc((100% - 2 * 24px) / 3);
 }
-.portfolio-content-item:hover,
-.portfolio-content-item:focus {
-}
-
 .portfolio-link {
   display: block;
-  cursor: auto;
+
+  transition: box-shadow var(--duration-timing-function);
 }
 
 .portfolio-link:hover,
@@ -638,4 +592,88 @@ img {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--duration-timing-function);
+  transform: translateY(100%);
+  padding: 40px 32px;
+
+  background-color: var(--button-text-color);
+  color: var(--button-background-color);
+}
+
+.overlay-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-link:hover .portfolio-overlay,
+.portfolio-link:focus .portfolio-overlay {
+  transform: translateY(0);
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(46, 47, 66, 0.4);
+
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 408px;
+  min-height: 584px;
+  border-radius: 4px;
+
+  background-color: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  transition: background-color var(--duration-timing-function),
+    color var(--duration-timing-function);
+}
+
+.modal-btn:hover {
+  background-color: var(--hover-link-button-color);
+  color: #ffffff;
+}
+
+.close-btn-img {
+  fill: currentColor;
 }
