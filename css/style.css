@@ -15,7 +15,7 @@
   --hover-link-button-color: #404bbf;
   --customers-color: #8e8f99;
 
-  --duration-timing-function: 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
